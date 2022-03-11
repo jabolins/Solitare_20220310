@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/baseTv"/>
+        <Button
+                android:text="@string/izdalit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/startBt"/>
+        <Button
+                android:text="@string/sajaukt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/shuffleBt"/>
+
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/gameFl" android:background="@color/teal_700">
+
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/king_of_diamonds2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/dKbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/jack_of_diamonds2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/dJbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds6"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d6bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds5"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d5bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds4"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d4bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds3"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d3bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d2bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/ace_of_spades"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/sAbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/ace_of_hearts"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/hAbt" android:scaleType="centerCrop"
+                    android:visibility="gone"
+                    android:padding="3dp"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/ace_of_clubs"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/cAbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts4"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h4bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts5"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h5bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts6"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h6bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts7"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h7bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts8"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h8bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts9"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h9bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts10"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h10bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/jack_of_hearts2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/hJbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/queen_of_hearts2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/hQbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/king_of_hearts2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/hKbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s2bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades3"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s3bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades4"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s4bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades5"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s5bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades6"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s6bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades7"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s7bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades8"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s8bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades9"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s9bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/spades10"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/s10bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/jack_of_spades2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/sJbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/queen_of_spades2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/sQbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/king_of_spades2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/sKbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c2bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs3"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c3bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs4"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c4bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs5"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c5bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs6"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c6bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs7"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c7bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs8"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c8bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs9"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c9bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/clubs10"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/c10bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/jack_of_clubs2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/cJbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/queen_of_clubs2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/cQbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/king_of_clubs2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/cKbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts3"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h3bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/hearts2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/h2bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/queen_of_diamonds2"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/dQbt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds10"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d10bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds9"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d9bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds8"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d8bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/diamonds7"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/d7bt" android:scaleType="centerCrop"
+                    android:padding="3dp" android:visibility="gone"/>
+            <ImageButton
+                    android:layout_width="60dp"
+                    android:layout_height="80dp" app:srcCompat="@drawable/ace_of_diamonds"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="32dp"
+                    android:layout_marginStart="1dp" android:id="@+id/dAbt" android:scaleType="centerCrop"
+                    android:visibility="gone" android:padding="3dp"/>
+
+        </FrameLayout>
+
+</LinearLayout>
+        </LinearLayout>
