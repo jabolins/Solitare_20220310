@@ -1,6 +1,7 @@
 package com.solitare_20220310;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -12,20 +13,20 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button newGameBt;
-    private Button shuffleBt;
-    private FrameLayout gameLayout;
-    ArrayList<ImageButton> acesArray;
-    ArrayList<ImageButton> playCardArray;
+    Button newGameBt;
+    Button shuffleBt;
+    FrameLayout gameLayout;
+    ArrayList<Card> aces;
+    ArrayList<Card> playCard;
     Card[][] cardBoard;
     CardDeck cardDeck;
-
+    CardSize cardSize;
     private View.OnClickListener cardClickListener = view -> moveCard(view);
     private View.OnClickListener newGameListener = view -> newGame();
     private View.OnClickListener shuffleCardsListener = view -> shuffleCards();
 
 
-    Coordinates coordinates = new Coordinates();
+    Coordinates coordinates;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,80 +37,96 @@ public class MainActivity extends AppCompatActivity {
 
         newGameBt = findViewById(R.id.startBt);
         newGameBt.setOnClickListener(newGameListener);
+
         shuffleBt = findViewById(R.id.shuffleBt);
         shuffleBt.setOnClickListener(shuffleCardsListener);
+
         cardDeck = new CardDeck(gameLayout);
 
-        ArrayList<Card> aces = cardDeck.getAces();
-        ArrayList<Card> playCard = cardDeck.getPlayCards();
+    }
 
-        for (int i = 0; i < playCard.size(); i++) {
-            playCard.get(i).getImageButton().setOnClickListener(cardClickListener);
-        }
-
+    private void newGame() {
         cardBoard = new Card[14][4];
+        aces = cardDeck.getAces();
+        playCard = cardDeck.getPlayCards();
 
         Collections.shuffle(aces);
         for (int i = 0; i < 4; i++) {
             cardBoard[0][i] = aces.get(i);
             cardBoard[0][i].setShuffled(false);
-            // cardBoard[1][i] = nAn.get(i);
             cardBoard[1][i] = null;
         }
 
         Collections.shuffle(playCard);
         int counter = 0;
-        for (int i = 2; i < 14; i++) {
-            for (int j = 0; j < 4; j++) {
-                cardBoard[i][j] = playCard.get(counter);
+        for (int y = 0; y < 4; y++) {
+            for (int x = 2; x < 14; x++) {
+                cardBoard[x][y] = playCard.get(counter);
                 counter++;
             }
         }
 
-    }
+        cardSize = new CardSize(gameLayout);
+        coordinates = new Coordinates(cardSize);
 
-    private void newGame() {
-
-        for (int i = 0; i < 14; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (cardBoard[i][j] != null) {
-                    cardBoard[i][j].getImageButton().setVisibility(View.VISIBLE);
-                    setCoordinates(i, j);
+        for (int x = 0; x < 14; x++) {
+            for (int y = 0; y < 4; y++) {
+                if (cardBoard[x][y] != null) {
+                    View view = cardBoard[x][y].getImageButton();
+                    ViewGroup.LayoutParams params = view.getLayoutParams();
+                    params.width = cardSize.getWidth();
+                    params.height = cardSize.getHeight();
+                    view.setLayoutParams(params);
+                    view.setX(coordinates.getXCoordinate(x));
+                    view.setY(coordinates.getYCoordinate(y));
+                    view.setVisibility(View.VISIBLE);
+                    view.setOnClickListener(cardClickListener);
                 }
             }
         }
     }
 
     public void moveCard(View view) {
-        //atrodam ievadītās kārts vietu
-        int row = 0;
-        int column = 0;
-        for (int i = 0; i < 14; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (cardBoard[i][j] != null && cardBoard[i][j].getImageButton() == view) {
-                    column = i;
-                    row = j;
+        Card cardForCheck = null;
+        int cardRow = 0;
+        int cardColumn = 0;
+        for (int x = 0; x < 14; x++) {
+            for (int y = 0; y < 4; y++) {
+                if (cardBoard[x][y] != null
+                        && cardBoard[x][y].getImageButton() == view) {
+                    cardForCheck = cardBoard[x][y];
+                    cardColumn = x;
+                    cardRow = y;
                 }
             }
         }
 
         // pārbaudām vai var samainīt
-        for (int i = 1; i < 14; i++) {
-            for (int j = 0; j < 4; j++) {
-                if (cardBoard[i][j] == null
-                        && cardBoard[i - 1][j] != null
-                        && cardBoard[column][row] != null) {
+        for (int x = 1; x < 14; x++) { // TODO te var izvilkt ārā metodi
+            for (int y = 0; y < 4; y++) {
+                if (cardBoard[x][y] == null
+                        && cardBoard[x - 1][y] != null
+                        && cardForCheck != null
+                        && cardForCheck.getValue() - 1 == cardBoard[x - 1][y].getValue()) {
+                    cardBoard[x][y] = cardForCheck;
+                    cardBoard[cardColumn][cardRow] = null;
+                    view.setX(coordinates.getXCoordinate(x));
+                    view.setY(coordinates.getYCoordinate(y));
+                    markCardsShuffled();
+                }
+            }
+        }
+    }
 
-                    if (cardBoard[column][row].getValue() - 1 == cardBoard[i - 1][j].getValue()) {
-
-                        cardBoard[i][j] = cardBoard[column][row];
-                        cardBoard[column][row] = null;
-                        setCoordinates(i, j);
-
-                        if (!cardBoard[i - 1][j].isShuffled()) {
-                            cardBoard[i][j].setShuffled(false);
-                        }
-                    }
+    private void markCardsShuffled() {
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 14; x++) {
+                if (cardBoard[x][y] != null
+                        && cardBoard[x][y].isShuffled()
+                        && cardBoard[x - 1][y] != null
+                        && !cardBoard[x - 1][y].isShuffled()
+                        && cardBoard[x][y].getValue()-1==cardBoard[x-1][y].getValue()) {
+                    cardBoard[x][y].setShuffled(false);
                 }
             }
         }
@@ -117,38 +134,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void shuffleCards() {
         ArrayList<Card> cardForShuffle = new ArrayList<>();
-
         for (int i = 0; i < 14; i++) {
             for (int j = 0; j < 4; j++) {
-
                 if (cardBoard[i][j] != null && cardBoard[i][j].isShuffled()) {
                     cardForShuffle.add(cardBoard[i][j]);
                     cardBoard[i][j] = null;
                 }
             }
         }
-
-        Collections.shuffle(cardForShuffle);
-        boolean isFirstFreePlace = false;
-        int counter = 0;
-        for (int j= 0; j < 4; j++) {
-            for (int i = 0; i< 14; i++) {
-                if (isFirstFreePlace) {
-                    cardBoard[i][j] = cardForShuffle.get(counter);
-                    counter++;
-                    setCoordinates(i, j);
-                }
-                if (cardBoard[i][j] == null) {
-                    isFirstFreePlace = true;
-                }
-            }
-            isFirstFreePlace=false;
-
-        }
+        shuffleCardboard(cardForShuffle);
     }
 
-    private void setCoordinates(int i, int j) {
-        cardBoard[i][j].getImageButton().setX(coordinates.getX()[i]);
-        cardBoard[i][j].getImageButton().setY(coordinates.getY()[j]);
+    private void shuffleCardboard(ArrayList<Card> cardForShuffle) {
+        boolean isFirstNullFound = false;
+        int counter = 0;
+
+        Collections.shuffle(cardForShuffle);
+        for (int y = 0; y < 4; y++) {
+            for (int x = 0; x < 14; x++) {
+                if (isFirstNullFound) {
+                    cardBoard[x][y] = cardForShuffle.get(counter);
+                    counter++;
+                    cardBoard[x][y].getImageButton().setX(coordinates.getXCoordinate(x));
+                    cardBoard[x][y].getImageButton().setY(coordinates.getYCoordinate(y));
+                }
+                if (cardBoard[x][y] == null) {
+                    isFirstNullFound = true;
+                }
+            }
+            isFirstNullFound = false;
+        }
     }
 }
